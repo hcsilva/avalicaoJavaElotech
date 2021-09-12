@@ -1,0 +1,10 @@
+pessoas.nome.campoObrigatorio = Nome é Obrigatório
+pessoas.cpf.campoObrigatorio = CPF é Obrigatório
+pessoas.dataNascimento.campoObrigatorio = Data de Nascimento é Obrigatório
+
+
+contato.nome.campoObrigatorio = Nome é Obrigatório
+contato.nome.campoObrigatorio = Telefone é Obrigatório
+contato.nome.campoObrigatorio = E-mail é Obrigatório
+contato.nome.campoObrigatorio = Pessoa é Obrigatória
+

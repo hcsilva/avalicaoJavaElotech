@@ -1,0 +1,23 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import java.util.Date;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.github.henrique.avaliacaojava.models.Pessoa;
+
+public class ContatoDto {
+
+	@NotEmpty(message = "{contato.nome.campoObrigatorio}")
+	private String nome;
+
+	@NotEmpty(message = "{contato.telefone.campoObrigatorio}")
+	private String telefone;
+
+	@NotEmpty(message = "{contato.email.campoObrigatorio}")
+	private Date email;
+
+	@NotNull(message = "{contato.pessoa.campoObrigatorio}")
+	private Pessoa pessoa;
+}

@@ -1,0 +1,16 @@
+package com.github.henrique.avaliacaojava.dto;
+
+import javax.validation.constraints.NotEmpty;
+
+public class PessoaDto {
+
+	@NotEmpty(message = "{pessoas.nome.campoObrigatorio}")
+	private String nome;
+
+	@NotEmpty(message = "{pessoa.cpf.campoObrigatorio}")
+	private String cpf;
+
+	@NotEmpty(message = "{pessoa.dataNascimento.campoObrigatorio}")
+	private Data dataNascimento;
+
+}

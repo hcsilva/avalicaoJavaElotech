@@ -1,0 +1,7 @@
+package com.github.henrique.avaliacaojava.integracao;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+public class PessoaControllerIT {
+
+}

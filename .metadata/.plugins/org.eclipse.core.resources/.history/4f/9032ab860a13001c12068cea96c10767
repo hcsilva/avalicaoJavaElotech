@@ -1,0 +1,84 @@
+package com.github.henrique.avaliacaojava.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.github.henrique.avaliacaojava.dto.ContatoDto;
+import com.github.henrique.avaliacaojava.mapper.ContatoMapper;
+import com.github.henrique.avaliacaojava.models.Contato;
+import com.github.henrique.avaliacaojava.models.Pessoa;
+import com.github.henrique.avaliacaojava.repository.ContatoRepository;
+
+@Service
+public class ContatoService implements ContatoMapper {
+
+	@Autowired
+	private ContatoRepository contatoRepository;
+
+	@Autowired
+	private ContatoMapper contatoMapper;
+
+	@Transactional
+	public Contato save(ContatoDto contatoDto) {
+		return contatoRepository.save(contatoMapper.toModel(contatoDto));
+	}
+
+	@Transactional(readOnly = true)
+	public Contato findById(Integer id) {
+		return contatoRepository.findById(id)
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Contato não encontrado"));
+	}
+
+	public void deletar(Integer id) {
+		Contato contato = findById(id);
+		contatoRepository.delete(contato);
+	}
+
+	public void update(Integer id, ContatoDto contatoAtualizadoDto) {
+		Contato contatoSalvo = findById(id);
+		Contato contato = contatoMapper.toModel(contatoAtualizadoDto);
+		contato.setId(contatoSalvo.getId());
+
+		contatoRepository.save(contato);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Pessoa> findAll() {
+		return contatoRepository.findAll();
+	}
+
+	@Transactional(readOnly = true)
+	public Page<Pessoa> findAll(Pageable pageable) {
+		return contatoRepository.findAll(pageable);
+	}
+
+	@Override
+	public Contato toModel(ContatoDto contatoDto) {
+
+		if (contatoDto == null) {
+			return null;
+		}
+
+		Contato contato = new Contato();
+		contato.setNome(contatoDto.getNome());
+		contato.setEmail(contatoDto.getEmail());
+		contato.setTelefone(contatoDto.getTelefone());
+		contato.setPessoa(contatoDto.getPessoa());
+
+		return contato;
+	}
+
+	@Override
+	public ContatoDto toDto(Contato contato) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

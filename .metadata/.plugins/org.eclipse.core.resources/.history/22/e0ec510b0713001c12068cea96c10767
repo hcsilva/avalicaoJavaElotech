@@ -1,0 +1,5 @@
+package com.github.henrique.avaliacaojava.models;
+
+public class Contato {
+
+}

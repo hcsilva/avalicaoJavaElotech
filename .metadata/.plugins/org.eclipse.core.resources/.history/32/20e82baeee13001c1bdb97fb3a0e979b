@@ -1,0 +1,9 @@
+package com.github.henrique.avaliacaojava.integracao;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootApplication
+public class PessoaControllerIT {
+
+}

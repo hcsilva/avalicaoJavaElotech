@@ -1,0 +1,81 @@
+package com.github.henrique.avaliacaojava.repository;
+
+import java.util.Date;
+
+import org.assertj.core.api.Assertions;
+import org.assertj.core.util.Arrays;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import com.github.henrique.avaliacaojava.models.Contato;
+import com.github.henrique.avaliacaojava.models.Pessoa;
+
+@DataJpaTest
+@DisplayName("Testes para Pessoa Repository")
+class PessoaRepositoryTest {
+
+	@Autowired
+	private PessoaRepository pessoaRepository;
+
+	@Test
+	@DisplayName("Salva e cria uma pessoa quando bem sucedido")
+	void save_PersistPessoa_WhenSuccessful() {
+		Pessoa pessoa = criarPessoa();
+		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+		Assertions.assertThat(pessoaSalva).isNotNull();
+		Assertions.assertThat(pessoaSalva.getId()).isNotNull();
+		Assertions.assertThat(pessoaSalva.getContatos()).isNotEmpty();
+	}
+
+	@Test
+	@DisplayName("Salva e atualiza uma pessoa quando bem sucedido")
+	void save_UpdatePessoa_WhenSuccessful() {
+		Pessoa pessoa = criarPessoa();
+		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+
+		pessoaSalva.setNome("Fulano");
+		pessoaSalva.setCpf("01744824085");
+
+		Pessoa pessoaAtualizada =  this.pessoaRepository.save(pessoaSalva);
+		Assertions.assertThat(pessoaAtualizada).isNotNull();
+		Assertions.assertThat(pessoaAtualizada.getId()).isNotNull();
+		Assertions.assertThat(pessoaAtualizada.getNome()).isEqualTo(pessoaSalva.getNome());
+		Assertions.assertThat(pessoaAtualizada.getCpf()).isEqualTo(pessoaSalva.getCpf());
+	}
+	
+	@Test
+	@DisplayName("Deleta uma pessoa quando bem sucedido")
+	void delete_Pessoa_WhenSuccessful() {
+		Pessoa pessoa = criarPessoa();
+		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
+
+		pessoaSalva.setNome("Fulano");
+		pessoaSalva.setCpf("01744824085");
+
+		Pessoa pessoaAtualizada =  this.pessoaRepository.save(pessoaSalva);
+		Assertions.assertThat(pessoaAtualizada).isNotNull();
+		Assertions.assertThat(pessoaAtualizada.getId()).isNotNull();
+		Assertions.assertThat(pessoaAtualizada.getNome()).isEqualTo(pessoaSalva.getNome());
+		Assertions.assertThat(pessoaAtualizada.getCpf()).isEqualTo(pessoaSalva.getCpf());
+	}
+
+	private Pessoa criarPessoa() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Teste Nome");
+		pessoa.setCpf("03050235007");
+		pessoa.setDataNascimento(new Date());
+
+		Contato contato = new Contato();
+		contato.setNome("Teste Contato");
+		contato.setEmail("testeContato@gmail.com");
+		contato.setPessoa(pessoa);
+		contato.setTelefone("999999999999");
+
+		pessoa.getContatos().add(contato);
+
+		return pessoa;
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.github.henrique.avaliacaojava.util;
+
+import java.util.Date;
+
+import com.github.henrique.avaliacaojava.dto.PessoaDto;
+import com.github.henrique.avaliacaojava.models.Contato;
+import com.github.henrique.avaliacaojava.models.Pessoa;
+
+public class PessoaDtoPostBodyCreator {
+	
+	public static Pessoa criarPessoaParaSerSalva() {
+		PessoaDto pessoaDto = new PessoaDto();
+		pessoaDto.setNome("Teste Nome");
+		pessoaDto.setCpf("03050235007");
+		pessoaDto.setDataNascimento(new Date());
+
+		ContatoDto contatoDto = new ContatoDto();
+		contato.setNome("Teste Contato");
+		contato.setEmail("testeContato@gmail.com");
+		contato.setPessoa(pessoa);
+		contato.setTelefone("999999999999");
+
+		pessoa.getContatos().add(contato);
+
+		return pessoa;
+	}
+
+}

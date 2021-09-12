@@ -1,0 +1,48 @@
+package com.github.henrique.avaliacaojava.integracao;
+
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+
+import com.github.henrique.avaliacaojava.models.Pessoa;
+import com.github.henrique.avaliacaojava.util.PessoaCreator;
+
+@SpringBootTest
+@AutoConfigureTestDatabase
+public class PessoaControllerIT {
+
+	@Autowired
+	private TestRestTemplate testRestTemplate;
+
+	@LocalServerPort
+	private int port;
+
+	@Test
+	@DisplayName("Retorna uma lista de pessoas paginada quando sucesso")
+	void list_return_pessoas_pageable_when_sucesso() {
+		String nomeEsperado = PessoaCreator.criarPessoaValida().getNome();
+
+		ResponseEntity<PageImpl<Pessoa>> exchange = testRestTemplate.exchange("/api/pessoa", HttpMethod.GET, null,
+				new ParameterizedTypeReference<PageImpl<Pessoa>>() {
+				});
+
+		Page<Pessoa> pessoaPage = pessoaController.list(0, 10);
+
+		Assertions.assertThat(pessoaPage).isNotNull();
+		Assertions.assertThat(pessoaPage.toList()).isNotEmpty();
+		Assertions.assertThat(pessoaPage.toList()).isNotEmpty().hasSize(1);
+		Assertions.assertThat(pessoaPage.toList().get(0).getNome()).isEqualTo(nomeEsperado);
+
+	}
+
+}

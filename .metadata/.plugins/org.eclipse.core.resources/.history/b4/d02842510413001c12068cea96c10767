@@ -1,0 +1,16 @@
+package com.github.henrique.avaliacaojava.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+import com.github.henrique.avaliacaojava.dto.AlunoDto;
+import com.github.henrique.avaliacaojava.models.Pessoa;
+
+@Mapper(componentModel = "spring")
+public interface AlunoMapper {
+	AlunoMapper INSTANCE = Mappers.getMapper(AlunoMapper.class);
+	
+	Pessoa toModel(AlunoDto alunoDto);
+	
+	AlunoDto toDto(Pessoa aluno);
+}

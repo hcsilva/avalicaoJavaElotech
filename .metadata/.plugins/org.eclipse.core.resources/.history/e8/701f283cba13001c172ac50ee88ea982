@@ -1,0 +1,45 @@
+package com.github.henrique.avaliacaojava.util;
+
+import java.util.Date;
+
+import com.github.henrique.avaliacaojava.models.Contato;
+import com.github.henrique.avaliacaojava.models.Pessoa;
+
+public class PessoaCreator {
+	
+	private Pessoa criarPessoaParaSerSalva() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Teste Nome");
+		pessoa.setCpf("03050235007");
+		pessoa.setDataNascimento(new Date());
+
+		Contato contato = new Contato();
+		contato.setNome("Teste Contato");
+		contato.setEmail("testeContato@gmail.com");
+		contato.setPessoa(pessoa);
+		contato.setTelefone("999999999999");
+
+		pessoa.getContatos().add(contato);
+
+		return pessoa;
+	}
+	
+	
+	private Pessoa criarPessoaParaSerSalva() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Teste Nome");
+		pessoa.setCpf("03050235007");
+		pessoa.setDataNascimento(new Date());
+
+		Contato contato = new Contato();
+		contato.setNome("Teste Contato");
+		contato.setEmail("testeContato@gmail.com");
+		contato.setPessoa(pessoa);
+		contato.setTelefone("999999999999");
+
+		pessoa.getContatos().add(contato);
+
+		return pessoa;
+	}
+
+}

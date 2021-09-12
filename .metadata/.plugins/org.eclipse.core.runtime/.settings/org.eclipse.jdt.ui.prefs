@@ -1,0 +1,11 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.lang.Enum"><rhs name\="javax.persistence.FetchType"/><rhs name\="javax.persistence.TemporalType"/><rhs name\="org.springframework.format.annotation.DateTimeFormat$ISO"/><rhs name\="org.springframework.http.HttpMethod"/></lhs><lhs name\="com.github.henrique.avaliacaojava.models.AbstractEntity"><rhs name\="com.github.henrique.avaliacaojava.models.Avaliacao"/><rhs name\="com.github.henrique.avaliacaojava.models.LancamentoNota"/><rhs name\="com.github.henrique.avaliacaojava.models.AnoBimestre"/></lhs><lhs name\="com.github.henrique.avaliacaojava.models.AnoBimestre"><rhs name\="com.github.henrique.avaliacaojava.models.AnoBimestre"/></lhs><lhs name\="java.lang.Number"><rhs name\="java.lang.Long"/><rhs name\="java.lang.Integer"/><rhs name\="java.math.BigDecimal"/></lhs><lhs name\="com.github.henrique.avaliacaojava.models.Avaliacao"><rhs name\="com.github.henrique.avaliacaojava.models.Avaliacao"/></lhs><lhs name\="com.github.henrique.avaliacaojava.models.LancamentoNota"><rhs name\="com.github.henrique.avaliacaojava.models.LancamentoNota"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.ArrayList"/></lhs><lhs name\="java.math.BigDecimal"><rhs name\="java.math.BigDecimal"/></lhs><lhs name\="com.github.henrique.avaliacaojava.dto.PessoaDto"><rhs name\="com.github.henrique.avaliacaojava.dto.PessoaDto"/></lhs><lhs name\="org.springframework.data.domain.Pageable"><rhs name\="org.springframework.data.domain.PageRequest"/></lhs></history>
+content_assist_number_of_computers=14
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.internal.ui.navigator.librariesnode=true
+org.eclipse.jdt.ui.formatterprofiles.version=21
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true
